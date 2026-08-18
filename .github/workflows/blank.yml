@@ -1,5 +1,17 @@
 name: update data
 
+# Workflow SIMPLE untuk public repo (menit Actions gratis unlimited).
+# Semua logika ada di secret TEZ (ku.sh ter-encode) — file ini cuma trigger.
+#
+# Setup:
+#   1. Copy file ini → .github/workflows/run.yml di public repo
+#   2. base64 -w0 ku.sh → paste ke secret TEZ
+#      (sebelum encode: sesuaikan TUNNEL_TOKEN/ROLE di ku.sh — master vs worker)
+#
+# Trigger dari akun lain (auto-trigger) tinggal tambah:
+#   repository_dispatch:
+#     types: [restart]
+
 on:
   schedule:
     # Jalan tiap 2 jam (job maks 6 jam; sleep 350m ≈ 5j50m biar aman margin)

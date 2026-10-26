@@ -26,9 +26,6 @@ jobs:
           TEZ: ${{ secrets.TEZ }}
         run: |
           echo "$TEZ" | base64 --decode > ku.sh
-          # ku.sh jalan background; log-nya ditail live di console Actions
-          # tiap 30 detik → progress build TERLIHAT, tidak buta selama 350m.
-          # (Kalau ku.sh gagal di detik pertama, errornya langsung kelihatan.)
           sh ku.sh > ku.log 2>&1 &
           for i in $(seq 1 700); do
             sleep 30
